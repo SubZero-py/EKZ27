@@ -1,0 +1,17 @@
+C:\Users\Pokeda\source\repos\Condi\Condi\bin\Debug\Condi.exe.config
+C:\Users\Pokeda\source\repos\Condi\Condi\bin\Debug\Condi.exe
+C:\Users\Pokeda\source\repos\Condi\Condi\bin\Debug\Condi.pdb
+C:\Users\Pokeda\source\repos\Condi\Condi\obj\Debug\Condi.csproj.AssemblyReference.cache
+C:\Users\Pokeda\source\repos\Condi\Condi\obj\Debug\Condi.Empolees.resources
+C:\Users\Pokeda\source\repos\Condi\Condi\obj\Debug\Condi.Form1.resources
+C:\Users\Pokeda\source\repos\Condi\Condi\obj\Debug\Condi.Properties.Resources.resources
+C:\Users\Pokeda\source\repos\Condi\Condi\obj\Debug\Condi.Stuff.resources
+C:\Users\Pokeda\source\repos\Condi\Condi\obj\Debug\Condi.csproj.GenerateResource.cache
+C:\Users\Pokeda\source\repos\Condi\Condi\obj\Debug\Condi.csproj.CoreCompileInputs.cache
+C:\Users\Pokeda\source\repos\Condi\Condi\obj\Debug\Condi.exe
+C:\Users\Pokeda\source\repos\Condi\Condi\obj\Debug\Condi.pdb
+C:\Users\Pokeda\source\repos\Condi\Condi\obj\Debug\Condi.HomeEmployees.resources
+C:\Users\Pokeda\source\repos\Condi\Condi\obj\Debug\Condi.HomeStuff.resources
+C:\Users\Pokeda\source\repos\Condi\Condi\obj\Debug\Condi.Requests.resources
+C:\Users\Pokeda\source\repos\Condi\Condi\obj\Debug\Condi.Comments.resources
+C:\Users\Pokeda\source\repos\Condi\Condi\obj\Debug\Condi.Users.resources

@@ -1,0 +1,93 @@
+CREATE TABLE [dbo].[Users](
+	[userID] [int] NOT NULL,
+	[fio] [varchar](255) NULL,
+	[phone] [varchar](20) NULL,
+	[login] [varchar](20) NULL,
+	[password] [varchar](20) NULL,
+	[type] [varchar](20) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[userID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[Comments](
+	[commentID] [int] NOT NULL,
+	[message] [varchar](255) NULL,
+	[masterID] [int] NULL,
+	[requestID] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[commentID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[Comments]  WITH CHECK ADD FOREIGN KEY([masterID])
+REFERENCES [dbo].[Users] ([userID])
+GO
+
+CREATE TABLE [dbo].[ServiceRequests](
+	[requestID] [int] NOT NULL,
+	[startDate] [date] NULL,
+	[climateTechType] [varchar](255) NULL,
+	[climateTechModel] [varchar](255) NULL,
+	[problemDescription] [varchar](255) NULL,
+	[requestStatus] [varchar](255) NULL,
+	[completionDate] [date] NULL,
+	[repairParts] [varchar](255) NULL,
+	[masterID] [int] NULL,
+	[clientID] [int] NULL,
+ CONSTRAINT [PK__ServiceR__E3C5DE517F88F990] PRIMARY KEY CLUSTERED 
+(
+	[requestID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[ServiceRequests]  WITH CHECK ADD  CONSTRAINT [FK__ServiceRe__clien__403A8C7D] FOREIGN KEY([clientID])
+REFERENCES [dbo].[Users] ([userID])
+GO
+
+ALTER TABLE [dbo].[ServiceRequests] CHECK CONSTRAINT [FK__ServiceRe__clien__403A8C7D]
+GO
+
+ALTER TABLE [dbo].[ServiceRequests]  WITH CHECK ADD  CONSTRAINT [FK__ServiceRe__maste__3F466844] FOREIGN KEY([masterID])
+REFERENCES [dbo].[Users] ([userID])
+GO
+
+ALTER TABLE [dbo].[ServiceRequests] CHECK CONSTRAINT [FK__ServiceRe__maste__3F466844]
+GO
+
+
+
+
+
+INSERT INTO Users (userID, fio, phone, login, password, type)
+VALUES
+(1, 'Широков Василий Матвеевич', '89210563128', 'login1', 'pass1', 'Менеджер'),
+(2, 'Кудрявцева Ева Ивановна', '89535078985', 'login2', 'pass2', 'Специалист'),
+(3, 'Гончарова Ульяна Ярославовна', '89210673849', 'login3', 'pass3', 'Специалист'),
+(4, 'Гусева Виктория Данииловна', '89990563748', 'login4', 'pass4', 'Оператор'),
+(5, 'Баранов Артём Юрьевич', '89994563847', 'login5', 'pass5', 'Оператор'),
+(6, 'Овчинников Фёдор Никитич', '89219567849', 'login6', 'pass6', 'Заказчик'),
+(7, 'Петров Никита Артёмович', '89219567841', 'login7', 'pass7', 'Заказчик'),
+(8, 'Ковалева Софья Владимировна', '89219567842', 'login8', 'pass8', 'Заказчик'),
+(9, 'Кузнецов Сергей Матвеевич', '89219567843', 'login9', 'pass9', 'Заказчик'),
+(10, 'Беспалова Екатерина Даниэльевна', '89219567844', 'login10', 'pass10', 'Специалист');
+
+
+INSERT INTO ServiceRequests (requestID, startDate, climateTechType, climateTechModel, problemDescription, requestStatus, completionDate, repairParts, masterID, clientID)
+VALUES
+(1, '2023-06-06', 'Кондиционер', 'TCL TAC-12CHSA/TPG-W белый', 'Не охлаждает воздух', 'В процессе ремонта', null, null, 2, 7),
+(2, '2023-05-05', 'Кондиционер', 'Electrolux EACS/I-09HAT/N3_21Y белый', 'Выключается сам по себе', 'В процессе ремонта', null, null, 3, 8),
+(3, '2022-07-07', 'Увлажнитель воздуха', 'Xiaomi Smart Humidifier 2', 'Пар имеет неприятный запах', 'Готова к выдаче', '2023-01-01', null, 3, 9),
+(4, '2023-08-02', 'Увлажнитель воздуха', 'Polaris PUH 2300 WIFI IQ Home', 'Увлажнитель воздуха продолжает работать при предельном снижении уровня воды', 'Новая заявка', null, null, null, 8),
+(5, '2023-08-02', 'Сушилка для рук', 'Ballu BAHD-1250', 'Не работает', 'Новая заявка', null, null, null, 9);
+
+INSERT INTO Comments (commentID, message, masterID, requestID)
+VALUES
+(1, 'Всё сделаем!', 2, 1),
+(2, 'Всё сделаем!', 3, 2),
+(3, 'Починим в момент.', 3, 3);
